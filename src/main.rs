@@ -1,5 +1,6 @@
 use std::env;
 mod commands;
+mod repository;
 
 use commands::*;
 
@@ -11,7 +12,7 @@ fn main() {
     //     Command::Help => println!("help"),
     //     _ => println!("weird shit happened"),
     // }
-    
+    // repository::GitRepository::__init__("as".to_string(), true);
 
 }
 
