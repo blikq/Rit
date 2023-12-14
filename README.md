@@ -23,7 +23,7 @@ Feel free to dive into the codebase and start contributing. Whether you want to 
 
 ### 2. Bug Reports and Feature Requests
 
-If you come across any bugs or have ideas for new features, please open an issue on our [issue tracker](https://github.com/blikq/rit/issues). Be sure to provide detailed information about the problem or feature request.
+If you come across any bugs or have ideas for new features, please open an issue on our [issue tracker](https://github.com/blikq/Rit/issues). Be sure to provide detailed information about the problem or feature request.
 
 ### 3. Documentation
 
@@ -37,8 +37,8 @@ Share Rit with your network. The more people who know about the project, the lar
 
 To start contributing, follow these steps:
 
-1. Fork the repository on GitHub: [Rit](https://github.com/blikq/rit)
-2. Clone your fork locally: `git clone https://github.com/blikq/rit.git`
+1. Fork the repository on GitHub: [Rit](https://github.com/blikq/Rit)
+2. Clone your fork locally: `git clone https://github.com/blikq/Rit.git`
 3. Set up a development environment following the instructions in the project's README.
 4. Explore the codebase and find an area where you'd like to contribute.
 5. Make your changes and submit a pull request.
