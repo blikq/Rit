@@ -36,44 +36,41 @@ impl GitRepository {
     }
 
     fn repo_path(&self, paths: Vec<PathBuf>) ->PathBuf {
-        let mut finale = &mut self.gitdir.clone();        
+        let finale = &mut self.gitdir.clone();        
         for pat in paths.iter() {
             finale.push(pat.display().to_string());
         }
         finale.to_path_buf()
     }
 
-    fn repo_file(&self, paths: Vec<PathBuf>, mkdir: bool) {
-        if self.repo_dir(paths.clone(), mkdir) {
-            self.repo_path(paths);
-        }
+    fn repo_file(&self, mut paths: Vec<PathBuf>, mkdir: bool) -> PathBuf {
+        paths.truncate(paths.len() - 1);
+        match self.repo_dir(paths.clone(), mkdir){
+            Ok(_) => return self.repo_path(paths),
+            Err(e) => panic!("Error code: {}", e),
+        };
+        // self.repo_path(paths);
+        
     }
 
-    fn repo_dir(&self, paths: Vec<PathBuf>, mkdir: bool) -> bool {
+    fn repo_dir(&self, paths: Vec<PathBuf>, mkdir: bool) -> Result<PathBuf, i32> {
         let path = &self.repo_path(paths.clone());
-        for pat in paths.iter() {
-            if pat.exists() {
-                if pat.is_dir(){
-                    return true;
-                }else{
-                    return false;
-                }
+        if path.exists() {
+            if path.is_dir(){
+                return Ok(path.to_path_buf());
             }else{
-                panic!("directory does not exist{}", pat.display().to_string());
+                panic!("Not a directory"); //TODO: show path
             }
-        }
-        for pat in paths.iter() {
+        };
             
-            if mkdir{
-                //might edit the error manage later
-                fs::create_dir(pat.display().to_string()).unwrap_err();
-                return true;
-            }else{
-                panic!("Not a directory {}", pat.display().to_string());
-                
-            }
+        if mkdir{
+            //might edit the error manage later
+            fs::create_dir(path.display().to_string()).unwrap_err();
+            return Ok(path.to_path_buf());
+        }else{
+            // panic!("Not a directory {}", path.display().to_string());
+            return Err(2);//will make future error codes doc for different errors
         }
-        return true;
     }
 
     // fn repo_path(&self, paths: &Vec<PathBuf>) -> Vec<PathBuf> {
