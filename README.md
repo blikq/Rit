@@ -43,5 +43,7 @@ To start contributing, follow these steps:
 4. Explore the codebase and find an area where you'd like to contribute.
 5. Make your changes and submit a pull request.
 
+Using this resource for inspiration [wyag](https://wyag.thb.lt/)
+
 
 Happy coding! 🚀
