@@ -5,10 +5,19 @@ use crate::repository::GitRepository;
 use ini::ini;
 use config::{*};
 
+
+
 pub fn repo_create(path: String) -> Result<GitRepository, Error>{
     //"""Create a new repository at path."""
     let repo = GitRepository::new(path.clone(), true);
 
+    let rit = PathBuf::from(".rit");
+    if !(rit.exists()){
+        if !(rit.is_dir()){
+            fs::create_dir_all(".rit");
+        }
+    }
+    
     if repo.worktree.exists(){
         if !(repo.worktree.is_dir()){
             panic!("Not a directory! {}", path)

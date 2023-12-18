@@ -2,4 +2,12 @@
         bare = false
         filemode = false
         repositoryformatversion = 0
+    [core]
+        bare = false
+        filemode = false
+        repositoryformatversion = 0
+    [core]
+        bare = false
+        filemode = false
+        repositoryformatversion = 0
     

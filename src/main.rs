@@ -7,8 +7,11 @@ use commands::*;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    // let command = Git::new(&args);
-    create_repo::repo_create(".".to_string());
+    let command = Git::new(&args);
+    match command{
+        Git::Init => {create_repo::repo_create(".".to_string());},
+        _ => panic!("Not yet implemented")
+    }
     // match command {
     //     Command::Add => println!("norm work"),
     //     Command::Help => println!("help"),
