@@ -1,12 +1,14 @@
 use std::env;
 mod commands;
 mod repository;
+mod create_repo;
 
 use commands::*;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let command = Git::new(&args);
+    // let command = Git::new(&args);
+    create_repo::repo_create(".".to_string());
     // match command {
     //     Command::Add => println!("norm work"),
     //     Command::Help => println!("help"),
