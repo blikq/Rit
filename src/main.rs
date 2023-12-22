@@ -9,7 +9,11 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let command = Git::new(&args);
     match command{
-        Git::Init => {create_repo::repo_create(".".to_string());},
+        Git::Init => {let path = args.get(2); 
+            let _ = match path{
+                Some(p) => create_repo::repo_create(p.to_string()),
+                None => create_repo::repo_create(".".to_string()),
+        };},
         _ => panic!("Not yet implemented")
     }
     // match command {
